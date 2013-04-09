@@ -1,0 +1,68 @@
+#! /bin/bash
+destpath=/home/revir/OpenSource/mylinuxconfig
+help()
+{
+	echo "This script is for moving and link file to $destpath.\n"
+	echo "Usage: `basename $0` file1 [file2 [file3...] [to destpath]\n"
+	echo "Option: -h help
+	-a all the files in current directory."
+
+	echo "Note: destpath has default value: $destpath"
+	exit 0
+}
+popt()
+{
+	if [ $# -gt "2" ];then	
+		b=`expr $# - 1`
+		eval last2argv=\$$b
+		eval lastargv=\$$#
+		if [ $last2argv = "to" ];then
+			destpath=$lastargv
+			target=${@:1:`expr $# - 2`}
+	
+		fi
+	fi
+}
+makelink()
+{
+	if [ -d $1 ];then
+		mkdir $2
+		for file in `ls $1`
+		do
+			makelink $1"/"$file $2"/"$file
+		done
+	else
+		ln -s $*
+	fi 
+}
+
+[ -z "$1" ] && help
+[ "$1" = "-h" ] && help
+
+target=$@
+
+#interpret options, if it has 'to' option
+popt $*
+
+
+# -a option
+if [ "$1" = "-a" ];then
+	target=`pwd`/*
+fi
+
+echo "target="$target
+echo "destpath="$destpath
+
+for item in ${target[@]}
+do
+	mv $item $destpath
+	[ $? != 0 ] && exit 0
+
+	makelink $destpath/`basename $item` $item
+	[ $? != 0 ] && exit 0
+	
+done
+
+
+
+	
