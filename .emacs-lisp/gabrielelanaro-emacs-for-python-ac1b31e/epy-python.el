@@ -25,6 +25,7 @@
 	    (concat epy-install-dir "python-libs/"))
     )
   
+
   (pymacs-load "ropemacs" "rope-")
   
   ;; Stops from erroring if there's a syntax err
@@ -55,7 +56,6 @@
 (defun epy-setup-ipython ()
   "Setup ipython integration with python-mode"
   (interactive)
-
   (setq
    python-shell-interpreter "ipython"
    python-shell-interpreter-args ""

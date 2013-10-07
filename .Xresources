@@ -1,0 +1,73 @@
+xterm.termName: xterm-256color
+!xterm.geometry: 80×36
+!xterm*inputMethod: xsunpinyin 
+!# # # # # 
+xterm*inputMethod: ibus
+xterm*eightBitInput: false
+xterm*altSendsEscape: true
+xterm*metaSendEscape: true
+xterm*deleteIsDEL: true
+!xterm*translations: #override \n\
+		!Shift :insert-seven-bit()
+		!Emacs*useXIM: true
+		!Emacs.font: WenQuanYi Micro Hei
+		xterm*locale: true
+		xterm.utf8:true
+		xterm*utf8Title: true
+		xterm*preeditType: Root
+		xterm*fontMenu*fontdefault*Label: Default
+		!# # # # # # # # # # # # # # 
+		xterm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=23
+		!xterm*faceName: Monaco:bold:antialias=true
+		xterm*faceSize: 23
+		!# # # # # # 
+		xterm*faceNameDoublesize:WenQuanYi Micro Hei:antialias=true:pixelsize=23
+		!mouse selecting to copy, ctrl-v to paste
+		!!Ctrl p to print screen content to file
+		!# # # # # # , # # # # # # , # # # # # # # # # # # C-v# # # # , # # # # C-c# # # # # 
+		XTerm*VT100.Translations: #override \
+			 Ctrl  V: insert-selection(CLIPBOARD,PRIMARY,CUT_BUFFER0) \n\
+			  : select-end(CLIPBOARD,PRIMARY,CUT_BUFFER0) \n\
+			   Ctrl  P: print() \n
+			   !# # fallback# # # 
+			   xterm.vt100.faceName: DejaVu Sans Mono:antialias=True:pixelsize=23
+			   !xterm.vt100.faceNameDoublesize: Droid Sans Fallback:antialias=True:pixelsize=14
+			   xterm.cjkWidth: true 
+			   xterm.xftAntialias: true
+			   xft.dpi: 96
+			   xft.hinting: 1
+			   xft.hintstyle: hintslight
+			   xft.antialias: 1
+			   xft.rgba: rgb
+			   xterm*SaveLines: 20000
+			   !xterm*background: #2e3436
+			   xterm*background: #121212
+			   !xterm*foreground: gray90
+			   !xterm*background: #2e3436
+			   xterm*foreground: #d3d7cf
+			   xterm*scrollbar: false
+
+			   xterm*rightScrollBar:false
+			   xterm*loginshell:  true
+			   xterm*cursorBlink: false
+			   xterm*borderLess: true
+			   xterm*colorUL: yellow
+			   xterm*colorBD: white
+			   !tango # # , # # # # # # # # # # linux consoles# # 
+			   !-tango color schema
+			   *xterm*color0: #2e3436
+			   *xterm*color1: #cc0000
+			   *xterm*color2: #4e9a06
+			   *xterm*color3: #c4a000
+			   *xterm*color4: #3465a4
+			   *xterm*color5: #75507b
+			   *xterm*color6: #0b939b
+			   *xterm*color7: #d3d7cf
+			   *xterm*color8: #555753
+			   *xterm*color9: #ef2929
+			   *xterm*color10: #8ae234
+			   *xterm*color11: #fce94f
+			   *xterm*color12: #729fcf
+			   *xterm*color13: #ad7fa8
+			   *xterm*color14: #00f5e9
+			   *xterm*color15: #eeeeec
